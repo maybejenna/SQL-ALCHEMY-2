@@ -12,14 +12,14 @@ with app.app_context():
     db.create_all()
 
     # If table isn't empty, empty it
-    User.query.delete()
+    Users.query.delete()
     # Assuming you want to also clear out the posts
-    Post.query.delete()
+    Posts.query.delete()
 
     # Add users
-    user1 = User(username='user1', first_name='First1', last_name='Last1')
-    user2 = User(username='user2', first_name='First2', last_name='Last2', img_url='images/user2img.png')
-    user3 = User(username='user3', first_name='First3', last_name='Last3')
+    user1 = Users(username='user1', first_name='First1', last_name='Last1')
+    user2 = Users(username='user2', first_name='First2', last_name='Last2', img_url='images/user2img.png')
+    user3 = Users(username='user3', first_name='First3', last_name='Last3')
 
     # Add new user objects to session, so they'll persist
     db.session.add(user1)
