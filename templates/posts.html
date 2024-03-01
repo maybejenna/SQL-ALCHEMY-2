@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+{% block title %}All Posts{% endblock%}
+
+{% block content %}
+    <h1>All Posts</h1>
+    <ul>
+        {% for post in posts %}
+        <li>
+            <strong>{{ post.title }}</strong> by {{ post.user.username }} on {{ post.post_date.strftime('%Y-%m-%d') }}
+            <p>{{ post.content }}</p>
+        </li>
+    {% else %}
+        <li>No posts found.</li>
+    {% endfor %}
+    </ul>
+</body>
+{% endblock %}
