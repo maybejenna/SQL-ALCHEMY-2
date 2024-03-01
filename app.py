@@ -4,7 +4,8 @@ from flask import Flask, request, redirect, render_template, url_for
 from models import db, connect_db, Users, Posts
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blogly.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 
@@ -94,7 +95,7 @@ def add_post(user_id):
     if request.method == "POST":
         title = request.form['title']
         content = request.form['content']
-        new_post = Post(title=title, content=content, user_id=user.id)
+        new_post = Posts(title=title, content=content, user_id=user.id)
 
         db.session.add(new_post)
         db.session.commit()
